@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Détails Étudiant</title>
+</head>
+<body>
+<h1>Détails de l'Étudiant</h1>
+<p><strong>ID :</strong> <span th:text="${etudiant.id}"></span></p>
+<p><strong>Code Epoge :</strong> <span th:text="${etudiant.codeEpoge}"></span></p>
+<p><strong>Nom :</strong> <span th:text="${etudiant.nom}"></span></p>
+<p><strong>Prénom :</strong> <span th:text="${etudiant.prenom}"></span></p>
+<p><strong>Email :</strong> <span th:text="${etudiant.email}"></span></p>
+<a href="etudiants">Retour à la liste</a>
+</body>
+</html>

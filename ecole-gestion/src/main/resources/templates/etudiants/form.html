@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Formulaire Étudiant</title>
+</head>
+<body>
+<h1 th:text="${etudiant.id == null ? 'Ajouter un étudiant' : 'Modifier un étudiant'}"></h1>
+<form th:action="@{/etudiants/save}" th:object="${etudiant}" method="post">
+  <input type="hidden" th:field="*{id}"/>
+  <label>Code Epoge:</label>
+  <input type="text" th:field="*{codeEpoge}" required/><br/>
+  <label>Nom:</label>
+  <input type="text" th:field="*{nom}" required/><br/>
+  <label>Prénom:</label>
+  <input type="text" th:field="*{prenom}" required/><br/>
+  <label>Email:</label>
+  <input type="email" th:field="*{email}" required/><br/>
+  <button type="submit">Enregistrer</button>
+</form>
+<a href="/etudiants">Retour à la liste</a>
+</body>
+</html>

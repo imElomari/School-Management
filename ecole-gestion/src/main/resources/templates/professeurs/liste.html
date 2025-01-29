@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Professeurs</title>
+</head>
+<body>
+<h1>Liste des Professeurs</h1>
+<a th:href="@{/professeurs/ajouter}">Ajouter un professeur</a>
+<table>
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="professeur : ${professeurs}">
+        <td th:text="${professeur.nom}"></td>
+        <td th:text="${professeur.prenom}"></td>
+        <td th:text="${professeur.email}"></td>
+        <td>
+            <a th:href="@{/professeurs/modifier/{id}(id=${professeur.id})}">Modifier</a>
+            <a th:href="@{/professeurs/supprimer/{id}(id=${professeur.id})}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce professeur ?');">Supprimer</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

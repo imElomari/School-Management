@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Modules</title>
+</head>
+<body>
+<h1>Liste des Modules</h1>
+<a th:href="@{/modules/ajouter}">Ajouter un Module</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="module : ${modules}">
+        <td th:text="${module.id}"></td>
+        <td th:text="${module.nom}"></td>
+        <td th:text="${module.description}"></td>
+        <td>
+            <a th:href="@{/modules/modifier/{id}(id=${module.id})}">Modifier</a>
+            <a th:href="@{/modules/supprimer/{id}(id=${module.id})}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce module ?');">Supprimer</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
