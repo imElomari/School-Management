@@ -5,6 +5,13 @@
 </head>
 <body>
 <h1>Liste des Étudiants</h1>
+
+<!-- Search Form -->
+<form th:action="@{/etudiants/search}" method="get">
+    <input type="text" name="keyword" placeholder="Rechercher par nom ou code Apogee"/>
+    <button type="submit">Rechercher</button>
+</form>
+
 <a th:href="@{/etudiants/ajouter}">Ajouter un Étudiant</a>
 <table>
     <thead>
@@ -12,6 +19,7 @@
         <th>Code Epoge</th>
         <th>Nom</th>
         <th>Prénom</th>
+        <th>Date de Naissance</th>
         <th>Email</th>
         <th>Actions</th>
     </tr>
@@ -21,8 +29,10 @@
         <td th:text="${etudiant.codeEpoge}"></td>
         <td th:text="${etudiant.nom}"></td>
         <td th:text="${etudiant.prenom}"></td>
+        <td th:text="${etudiant.dateNaissance}"></td>
         <td th:text="${etudiant.email}"></td>
         <td>
+            <a th:href="@{/etudiants/details/{id}(id=${etudiant.id})}">Details</a>
             <a th:href="@{/etudiants/modifier/{id}(id=${etudiant.id})}">Modifier</a>
             <a th:href="@{/etudiants/supprimer/{id}(id=${etudiant.id})}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet étudiant ?');">Supprimer</a>
         </td>

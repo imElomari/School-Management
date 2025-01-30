@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inscrire un Étudiant dans un Module</title>
+</head>
+<body>
+<h1>Inscrire un Étudiant dans un Module</h1>
+
+<div>
+    <p><strong>Code Apogee:</strong> <span th:text="${etudiant.codeEpoge}"></span></p>
+    <p><strong>Nom:</strong> <span th:text="${etudiant.nom}"></span></p>
+    <p><strong>Prénom:</strong> <span th:text="${etudiant.prenom}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${etudiant.email}"></span></p>
+</div>
+
+<h2>Choisir un Module</h2>
+<form th:action="@{/etudiants/inscrire/{id}(id=${etudiant.id})}" method="post">
+    <select name="moduleId">
+        <option th:each="module : ${modules}" th:value="${module.id}" th:text="${module.nom}"></option>
+    </select>
+    <button type="submit">Inscrire</button>
+</form>
+
+<a th:href="@{/etudiants/details/{id}(id=${etudiant.id})}">Retour aux détails de l'étudiant</a>
+</body>
+</html>

@@ -59,4 +59,12 @@ public class Modules {
             inverseJoinColumns = @JoinColumn(name = "etudiant_id")
     )
     private Set<Etudiant> etudiants = new HashSet<>();
+
+    public Set<Etudiant> getEtudiants() {
+        return etudiants;
+    }
+
+    public void setEtudiants(Set<Etudiant> etudiants) {
+        this.etudiants = etudiants;
+    }
 }

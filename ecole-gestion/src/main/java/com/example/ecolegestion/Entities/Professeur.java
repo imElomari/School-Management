@@ -49,12 +49,4 @@ public class Professeur {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    @ManyToMany
-    @JoinTable(
-            name = "professeur_module",
-            joinColumns = @JoinColumn(name = "professeur_id"),
-            inverseJoinColumns = @JoinColumn(name = "module_id")
-    )
-    private Set<Modules> modules;
 }
