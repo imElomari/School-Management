@@ -75,9 +75,18 @@ public class Etudiant {
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
 
+    public Set<Modules> getModules() {
+        return modules;
+    }
+
+    public void setModules(Set<Modules> modules) {
+        this.modules = modules;
+    }
+
     @Column(unique = true, nullable = false)
     private String email;
 
     @ManyToMany(mappedBy = "etudiants")
     private Set<Modules> modules = new HashSet<>();
+
 }

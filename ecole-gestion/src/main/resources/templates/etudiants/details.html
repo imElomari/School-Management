@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Détails de l'Étudiant</title>
+</head>
+<body>
+<h1>Détails de l'Étudiant</h1>
+
+<div>
+    <p><strong>Code Apogee:</strong> <span th:text="${etudiant.codeEpoge}"></span></p>
+    <p><strong>Nom:</strong> <span th:text="${etudiant.nom}"></span></p>
+    <p><strong>Prénom:</strong> <span th:text="${etudiant.prenom}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${etudiant.email}"></span></p>
+    <p><strong>Date de Naissance:</strong> <span th:text="${etudiant.dateNaissance}"></span></p>
+</div>
+
+<a th:href="@{/etudiants/inscrire/{id}(id=${etudiant.id})}">Inscrire à un module</a>
+
+<h2>Modules Inscrits</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Nom du Module</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="module : ${etudiant.modules}">
+        <td th:text="${module.nom}"></td>
+        <td th:text="${module.description}"></td>
+        <td>
+            <form th:action="@{/etudiants/annulerInscription/{etudiantId}/{moduleId}(etudiantId=${etudiant.id},moduleId=${module.id})}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler ce module ?');">
+                <button type="submit">Annuler</button>
+            </form>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/etudiants}">Retour à la liste des étudiants</a>
+</body>
+</html>

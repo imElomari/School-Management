@@ -2,6 +2,8 @@ package com.example.ecolegestion.Controllers;
 
 
 import com.example.ecolegestion.Entities.Etudiant;
+import com.example.ecolegestion.Entities.Modules;
+import com.example.ecolegestion.Repositories.ModuleRepository;
 import com.example.ecolegestion.Services.EtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,8 @@ public class EtudiantController {
 
     @Autowired
     private EtudiantService etudiantService;
+    @Autowired
+    private ModuleRepository modulesRepository;
 
     // Liste des étudiants
     @GetMapping
@@ -71,4 +75,50 @@ public class EtudiantController {
             return "redirect:/etudiants";
         }
     }
+
+    // Recherche un etudiant par son nom ou son code Apogee
+    @GetMapping("/search")
+    public String searchEtudiant(@RequestParam String keyword, Model model) {
+        List<Etudiant> etudiants = etudiantService.searchEtudiant(keyword);
+        model.addAttribute("etudiants", etudiants);
+        return "etudiants/liste";
+    }
+
+    // Afficher toutes les details sur un etudiant aussi les modules inscrits par cet etudiant
+    @GetMapping("/details/{id}")
+    public String detailsEtudiant(@PathVariable Long id, Model model) {
+        Optional<Etudiant> etudiant = etudiantService.getEtudiantById(id);
+        if (etudiant.isPresent()) {
+            model.addAttribute("etudiant", etudiant.get());
+            return "etudiants/details";
+        } else {
+            return "redirect:/etudiants";
+        }
+    }
+
+    // Inscrire un etudiant dans un module
+    @GetMapping("/inscrire/{id}")
+    public String showInscrireForm(@PathVariable Long id, Model model) {
+        Optional<Etudiant> etudiant = etudiantService.getEtudiantById(id);
+        if (etudiant.isPresent()) {
+            model.addAttribute("etudiant", etudiant.get());
+            List<Modules> modules = modulesRepository.findAll();
+            model.addAttribute("modules", modules);
+            return "etudiants/inscrire";
+        } else {
+            return "redirect:/etudiants";
+        }
+    }
+    @PostMapping("/inscrire/{etudiantId}")
+    public String inscrireEtudiant(@PathVariable Long etudiantId, @RequestParam Long moduleId) {
+        etudiantService.inscrireEtudiant(etudiantId, moduleId);
+        return "redirect:/etudiants/details/" + etudiantId;
+    }
+
+    @PostMapping("/annulerInscription/{etudiantId}/{moduleId}")
+    public String annulerInscription(@PathVariable Long etudiantId, @PathVariable Long moduleId) {
+        etudiantService.annulerInscription(etudiantId, moduleId);
+        return "redirect:/etudiants/details/" + etudiantId;
+    }
+
 }
