@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Associer Professeur</title>
+</head>
+<body>
+<h1>Associer Professeur</h1>
+<form th:action="@{/modules/associer/{id}(id=${module.id})}" method="post">
+    <label for="professeur">Professeur:</label>
+    <select id="professeur" name="professeurId">
+        <option th:each="professeur : ${professeurs}" th:value="${professeur.id}" th:text="${professeur.nom}"></option>
+    </select>
+    <br/>
+    <button type="submit">Associer</button>
+</form>
+</body>
+</html>

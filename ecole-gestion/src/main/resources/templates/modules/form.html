@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Ajouter un Module</title>
+    <title>Ajouter/Modifier Module</title>
 </head>
 <body>
-<h1>Ajouter un Module</h1>
+<h1>Ajouter/Modifier Module</h1>
 <form th:action="@{/modules/ajouter}" th:object="${module}" method="post">
     <label for="nom">Nom:</label>
-    <input type="text" id="nom" th:field="*{nom}" required>
-    <br>
+    <input type="text" id="nom" th:field="*{nom}" />
+    <br/>
     <label for="description">Description:</label>
-    <input type="text" id="description" th:field="*{description}" required>
-    <br>
-    <button type="submit">Ajouter</button>
+    <input type="text" id="description" th:field="*{description}" />
+    <br/>
+    <label for="professeur">Professeur:</label>
+    <select id="professeur" th:field="*{professeur}">
+        <option th:each="professeur : ${professeurs}" th:value="${professeur}" th:text="${professeur.nom}"></option>
+    </select>
+    <br/>
+    <button type="submit">Enregistrer</button>
 </form>
-<a th:href="@{/modules}">Retour à la liste</a>
 </body>
 </html>

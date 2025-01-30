@@ -2,6 +2,7 @@ package com.example.ecolegestion.Entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -73,6 +74,7 @@ public class Etudiant {
     }
 
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateNaissance;
 
     public Set<Modules> getModules() {
