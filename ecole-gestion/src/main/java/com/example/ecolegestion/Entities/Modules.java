@@ -17,7 +17,7 @@ public class Modules {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "professeur_id")
+    @JoinColumn(name = "professeur_id", nullable = true)
     private Professeur professeur;
 
     public Long getId() {
