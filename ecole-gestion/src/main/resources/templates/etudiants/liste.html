@@ -21,6 +21,9 @@
         <th>Prénom</th>
         <th>Date de Naissance</th>
         <th>Email</th>
+        <th>Telephone</th>
+        <th>Adresse</th>
+        <th>Date d'Inscription</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -31,6 +34,9 @@
         <td th:text="${etudiant.prenom}"></td>
         <td th:text="${etudiant.dateNaissance}"></td>
         <td th:text="${etudiant.email}"></td>
+        <td th:text="${etudiant.telephone}"></td>
+        <td th:text="${etudiant.adresse}"></td>
+        <td th:text="${etudiant.dateInscription}"></td>
         <td>
             <a th:href="@{/etudiants/details/{id}(id=${etudiant.id})}">Details</a>
             <a th:href="@{/etudiants/modifier/{id}(id=${etudiant.id})}">Modifier</a>

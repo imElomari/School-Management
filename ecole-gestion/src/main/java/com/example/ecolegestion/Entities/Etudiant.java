@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,13 +18,59 @@ import java.util.Set;
 public class Etudiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  // Le champ id doit être présent
+    private Long id;
 
     @Column(unique = true, nullable = false)
-    private String codeEpoge;
+    private String codeApoge;
 
+    @Column(nullable = false)
     private String nom;
+
+    @Column(nullable = false)
     private String prenom;
+
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dateNaissance;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(unique = true, nullable = false)
+    private String telephone;
+
+    @Column(unique = true, nullable = false)
+    private String adresse;
+
+    @Column(nullable = false)
+    private LocalDateTime dateInscription;
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public LocalDateTime getDateInscription() {
+        return dateInscription;
+    }
+
+    public void setDateInscription(LocalDateTime dateInscription) {
+        this.dateInscription = dateInscription;
+    }
+
+    @ManyToMany(mappedBy = "etudiants")
+    private Set<Modules> modules = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -33,12 +80,12 @@ public class Etudiant {
         this.id = id;
     }
 
-    public String getCodeEpoge() {
-        return codeEpoge;
+    public String getCodeApoge() {
+        return codeApoge;
     }
 
-    public void setCodeEpoge(String codeEpoge) {
-        this.codeEpoge = codeEpoge;
+    public void setCodeApoge(String codeApoge) {
+        this.codeApoge = codeApoge;
     }
 
     public String getNom() {
@@ -73,10 +120,6 @@ public class Etudiant {
         this.email = email;
     }
 
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dateNaissance;
-
     public Set<Modules> getModules() {
         return modules;
     }
@@ -84,11 +127,5 @@ public class Etudiant {
     public void setModules(Set<Modules> modules) {
         this.modules = modules;
     }
-
-    @Column(unique = true, nullable = false)
-    private String email;
-
-    @ManyToMany(mappedBy = "etudiants")
-    private Set<Modules> modules = new HashSet<>();
 
 }
