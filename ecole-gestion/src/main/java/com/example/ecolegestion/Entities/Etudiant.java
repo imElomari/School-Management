@@ -42,8 +42,7 @@ public class Etudiant {
     @Column(unique = true, nullable = false)
     private String adresse;
 
-    @Column(nullable = false)
-    private LocalDateTime dateInscription;
+    private LocalDateTime dateInscription =LocalDateTime.now();
 
     public String getTelephone() {
         return telephone;

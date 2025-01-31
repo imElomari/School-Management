@@ -3,6 +3,7 @@ package com.example.ecolegestion.Entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,8 +14,15 @@ public class Modules {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true,nullable = false)
     private String nom;
+
+    @Column(nullable = false)
     private String description;
+
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+
 
     @ManyToOne
     @JoinColumn(name = "professeur_id", nullable = true)

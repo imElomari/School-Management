@@ -1,22 +1,54 @@
 package com.example.ecolegestion.Entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Professeur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String nom;
+
+    @Column(nullable = false)
     private String prenom;
 
     @Column(unique = true, nullable = false)
     private String email;
+
+    @Column(unique = true, nullable = false)
+    private String telephone;
+
+    @Column(unique = true, nullable = false)
+    private String adresse;
+
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
 
     public Long getId() {
         return id;
