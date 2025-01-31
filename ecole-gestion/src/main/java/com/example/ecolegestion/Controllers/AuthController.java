@@ -18,7 +18,7 @@ public class AuthController {
     @GetMapping("/login")
     public String login() {
         return "login"; // Ensure you have a login.html in your templates folde
-        // r
+
     }
 
     @GetMapping("/register")

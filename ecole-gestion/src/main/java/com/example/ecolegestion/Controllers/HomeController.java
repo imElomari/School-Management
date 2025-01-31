@@ -8,7 +8,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "home"; // Ensure you have a home.html in your templates folder
+        return "login";
     }
 
 

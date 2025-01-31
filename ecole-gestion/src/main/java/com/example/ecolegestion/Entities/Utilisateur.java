@@ -17,6 +17,9 @@ public class Utilisateur {
     @Column(nullable = false)
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     public Long getId() {
         return id;
     }
@@ -49,6 +52,5 @@ public class Utilisateur {
         this.role = role;
     }
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+
 }
