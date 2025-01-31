@@ -1,27 +1,79 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Register</title>-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/styles.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Register</h1>-->
+<!--<form th:action="@{/register}" th:object="${utilisateur}" method="post">-->
+<!--    <div>-->
+<!--        <label for="username">Username:</label>-->
+<!--        <input type="text" id="username" th:field="*{username}" required>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="password">Password:</label>-->
+<!--        <input type="password" id="password" th:field="*{password}" required>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="role">Role:</label>-->
+<!--        <input type="text" id="role" th:field="*{role}" required>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <button type="submit">Register</button>-->
+<!--    </div>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
     <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
-<h1>Register</h1>
-<form th:action="@{/register}" th:object="${utilisateur}" method="post">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" th:field="*{username}" required>
+
+<div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image: url('images/bg_1.jpg');"></div>
+    <div class="contents order-2 order-md-1">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-7">
+                    <h3>Register</h3>
+                    <form th:action="@{/register}" th:object="${utilisateur}" method="post">
+                        <div class="form-group first">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" placeholder="Enter your username" id="username" th:field="*{username}" required>
+                        </div>
+                        <div class="form-group last mb-3">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" placeholder="Enter your password" id="password" th:field="*{password}" required>
+                        </div>
+<!--                        <div class="form-group last mb-3">-->
+<!--                            <label for="role">Role</label>-->
+<!--                            <input type="text" class="form-control" placeholder="Enter your role" id="role" th:field="*{role}" required>-->
+<!--                        </div>-->
+                        <input type="submit" value="Register" class="btn btn-block btn-primary" style="background-color: #007bff; border: none; color: white; padding: 10px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; text-align: center; font-weight: bold;">
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" th:field="*{password}" required>
-    </div>
-    <div>
-        <label for="role">Role:</label>
-        <input type="text" id="role" th:field="*{role}" required>
-    </div>
-    <div>
-        <button type="submit">Register</button>
-    </div>
-</form>
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
+
