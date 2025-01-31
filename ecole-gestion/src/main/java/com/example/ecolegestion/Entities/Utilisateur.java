@@ -1,5 +1,6 @@
 package com.example.ecolegestion.Entities;
 
+import com.example.ecolegestion.Entities.Enum.Role;
 import jakarta.persistence.*;
 import lombok.Data;
 

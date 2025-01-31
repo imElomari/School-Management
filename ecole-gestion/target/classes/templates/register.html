@@ -58,10 +58,14 @@
                             <label for="password">Password</label>
                             <input type="password" class="form-control" placeholder="Enter your password" id="password" th:field="*{password}" required>
                         </div>
-<!--                        <div class="form-group last mb-3">-->
-<!--                            <label for="role">Role</label>-->
-<!--                            <input type="text" class="form-control" placeholder="Enter your role" id="role" th:field="*{role}" required>-->
-<!--                        </div>-->
+                        <div class="form-group last mb-3">
+                            <label for="role">Role</label>
+                            <select class="form-control" id="role" th:field="*{role}" required>
+                                <option value="" disabled selected>Sélectionnez un rôle</option>
+                                <option th:each="r : ${T(com.example.ecolegestion.Entities.Enum.Role).values()}" th:value="${r}" th:text="${r}"></option>
+                            </select>
+                        </div>
+
                         <input type="submit" value="Register" class="btn btn-block btn-primary" style="background-color: #007bff; border: none; color: white; padding: 10px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; text-align: center; font-weight: bold;">
                     </form>
                 </div>
